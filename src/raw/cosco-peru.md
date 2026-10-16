@@ -1,0 +1,14 @@
+# COSCO Shipping Lines Perú — LinkedIn (verificado 16-oct-2026)
+- Página: "COSCO Shipping Lines Peru" · /company/coscoshipping-lines-peru/ · San Isidro, Lima · fundación 2011
+- Tagline: "Soluciones Globales de Transporte Marítimo y Cadena de Suministro | Conectando el Perú con el Mundo"
+- About menciona alianza con empresa hermana del Megapuerto de Chancay y ruta expresa directa Chancay–Shanghái
+- Seguidores: 8 mil ("8 mil") · 41 miembros asociados · 51-200 empleados
+- Muestra: 12 posts en total visibles, el más antiguo ~7 meses
+- Frecuencia: 2 posts en 30 días; 5 en 90 días → ~1,7/mes
+- Promedio 90 días: 120 reacc · 7,8 com · 11 shares → ~139 interacciones/post → ~1,7% (alto por base chica + avisos laborales)
+- Formatos: Imagen 12 (100%)
+- Contenido: 10 de 12 son avisos de empleo/"PROCESO CERRADO" (83%); 2 comerciales: lanzamiento servicio CHX3 Paita–Asia (222 reacc) y actualización servicio quincenal Matarani (112)
+- Top: Asistente (aviso empleo) 459; CHX3 Paita–Asia 222
+- No hay contenido sobre Chancay en el feed pese a ser el gran diferenciador del About
+- Ads: sin Ad Library (N/A según cliente)
+- Idioma: español

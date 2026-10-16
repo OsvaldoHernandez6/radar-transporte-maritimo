@@ -1,0 +1,13 @@
+# Datos de industria (fuentes web, oct-2026)
+- Cuota de capacidad global (Alphaliner, sept-2026 vía Logistics Management/SC247): MSC 21,5% · Maersk 13,8% · CMA CGM 12,8% · COSCO ~10,6% · Hapag-Lloyd 7,0%
+- MSC récord histórico de cuota (21,5%), superando el 19,3% de Maersk en 2018; Maersk en su mínimo de 20 años (13,7%) y enfocado en logística integrada/descarbonización (India Seatrade News jun-2026)
+- CMA CGM, carrier que más creció en H1 2026 (Alphaliner newsletter 27-2026); orderbook mayor (159 buques) (container-news)
+- Hapag-Lloyd compra ZIM (US$4,2 bn) (container-news)
+- Puertos Latam (CEPAL Boletín FAL 414, 2024-25): Santos 5,48M TEU; Manzanillo MX 3,92M; Cartagena 3,70M; Callao 3,07M (4°)
+- Chancay: 1er año 286.255 TEU (nov24-nov25); 2025 Perú movió 4,095M TEU (Callao 3,3M, Paita 414k, Chancay 232k); ene-may 2026 Chancay 164.221 TEU > Paita, ~10% del total nacional, >50% transbordo; Chancay–Shanghái 23 días; capacidad 1M TEU (APN/ComexPerú vía Perú Retail, La República, Gestión)
+- Sudamérica exporta ~30% del volumen mundial refrigerado (Wilmsmeier/CEPAL vía MundoMarítimo)
+- Fruta exótica: Drewry proyecta >6% anual (MundoMarítimo)
+- Chile: solo 0,5% de su fruta fresca exportada va al Sudeste Asiático (FreshPlaza, Asia Fruit Logistica 2026)
+- B2B LinkedIn: compradores investigan ~124 días antes de hablar con ventas; decisión típica 13 stakeholders internos + 9 influenciadores externos (LinkedIn/Factors.ai sept-2026, vía Relevant Audience)
+- 95% de compradores B2B no está en mercado hoy (Ehrenberg-Bass/B2B Institute); 79% de "hidden buyers" más proclives a favorecer en RFP al proveedor con thought leadership consistente (Edelman-LinkedIn 2025, vía Clickforest)
+- 75% compradores B2B usa redes sociales para investigar proveedores; 80–90% arma shortlist antes de contactar (dsmn8)

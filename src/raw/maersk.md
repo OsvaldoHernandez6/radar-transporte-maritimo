@@ -1,0 +1,11 @@
+# Maersk — LinkedIn (verificado 16-oct-2026)
+- Página: "A.P. Moller - Maersk" (no "Maersk") · /company/maersk-group/ · Copenhagen
+- Seguidores: 3 mill. ("3 mills.") · 80.004 miembros asociados · +10.001 empleados
+- Muestra: 50 posts, todos dentro de ~1 mes → altísima frecuencia
+- Posts <30 días: 36 → ~36-40/mes (~9/semana)
+- Promedio 30 días: 244 reacc · 7,6 com · 16,6 shares → ~268 interacciones/post → 0,009%
+- Formatos (50): Multi-imagen/carrusel de imágenes 19 (38%), Video 15 (30%), Documento 11 (22%), Imagen 5 (10%)
+- Top: piloto de propulsión asistida por viento 2027 → 1.587; efeméride 1975 semi-container 975; "Never miss another cargo connection" (producto) 661; Fruit Attraction último día 504; "Guess the port" 489
+- Temas: integrador logístico end-to-end (air freight, cold chain, warehousing), producto/servicio, thought leadership (nearshoring, resiliencia, volatilidad de demanda, clima/tifones, stress-test supply chain), ferias (Fruit Attraction, Asia Fruit Logistica, Expoalimentaria Lima), gamificación ("Guess the port" — Pacífico), historia de marca (desde 1904, 1975), descarbonización (viento)
+- Latam: ~8 posts en ESPAÑOL segmentados (Expoalimentaria, aguacate/palta "¿Buscas un socio logístico…?", "Sus productos frescos…", volatilidad de demanda, "De la visibilidad a la acción", Asia Fruit Logistica), con baja interacción (12–198) → segmentación por idioma/región de la página global
+- Idioma: inglés + versiones en español

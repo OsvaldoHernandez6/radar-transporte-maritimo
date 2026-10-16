@@ -1,0 +1,325 @@
+<title>Radar Navieras</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: manifiesto portuario — bandas apiladas, datos en mono, cada marca marcada como un contenedor de color */
+:root{
+  --bg:#EEF2F4; --surface:#FFFFFF; --ink:#0F1C26; --muted:#56656F; --line:rgba(15,28,38,.12);
+  --accent:#0E6F73; --accent-soft:rgba(14,111,115,.09); --band:#0F1C26; --band-ink:#E7EEF1;
+  --ok-bg:#DDF0E6; --ok-fg:#1F6B45; --est-bg:#FBEFD3; --est-fg:#8A5A00; --hi:#B3261E; --mid:#A06A00;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0B141B; --surface:#121E27; --ink:#E4ECF0; --muted:#93A4AE; --line:rgba(228,236,240,.13);
+  --accent:#4FC3C2; --accent-soft:rgba(79,195,194,.12); --band:#060D12; --band-ink:#E4ECF0;
+  --ok-bg:#163A29; --ok-fg:#8FE0B4; --est-bg:#3A2E10; --est-fg:#F2C96B; --hi:#FF8A80; --mid:#F2C96B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B141B; --surface:#121E27; --ink:#E4ECF0; --muted:#93A4AE; --line:rgba(228,236,240,.13);
+  --accent:#4FC3C2; --accent-soft:rgba(79,195,194,.12); --band:#060D12; --band-ink:#E4ECF0;
+  --ok-bg:#163A29; --ok-fg:#8FE0B4; --est-bg:#3A2E10; --est-fg:#F2C96B; --hi:#FF8A80; --mid:#F2C96B; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.02;margin:0;letter-spacing:.01em}
+h2{font-size:clamp(30px,4.2vw,46px);font-weight:800;text-transform:uppercase}
+h3{font-size:22px;font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+p{margin:0}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* hero */
+.hero{background:var(--band);color:var(--band-ink)}
+.hero .wrap{padding-block:48px 36px;display:grid;gap:28px}
+.hero .eyebrow{color:#8FB3BF}
+.hero h1{font-size:clamp(54px,9vw,112px);font-weight:800;text-transform:uppercase;line-height:.88}
+.hero h1 span{color:#4FC3C2}
+.hero .sub{max-width:62ch;font-size:17px;color:#C3D2D9}
+.manifest{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+.manifest>div{background:var(--band);padding:14px 14px 12px;display:grid;gap:6px;min-width:0}
+.manifest .bx{height:6px;border-radius:1px}
+.manifest .nm{font-family:var(--f-display);font-size:22px;font-weight:600;text-transform:uppercase}
+.manifest .kv{font-family:var(--f-mono);font-size:12px;color:#9FB6C0;display:flex;justify-content:space-between;gap:8px}
+.manifest .kv b{color:#E7EEF1;font-weight:500}
+
+/* nav */
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:8px;scrollbar-width:none}
+nav.top a{flex:none;font-family:var(--f-mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;color:var(--muted);padding:7px 11px;border-radius:2px}
+nav.top a:hover{background:var(--accent-soft);color:var(--ink)}
+
+section{padding-block:56px}
+section+section{border-top:1px solid var(--line)}
+.head{display:grid;gap:10px;margin-bottom:28px;max-width:70ch}
+.head p{color:var(--muted)}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:20px;min-width:0}
+.panel>h3{margin-bottom:14px}
+.note{font-size:12.5px;color:var(--muted);margin-top:12px}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.stat{background:var(--surface);padding:20px;display:grid;gap:6px;align-content:start}
+.stat .v{font-family:var(--f-display);font-size:44px;font-weight:800;color:var(--accent);line-height:1}
+.stat .l{font-size:14px}
+.stat .s{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+
+/* chips & badges */
+.chip{display:inline-flex;align-items:center;gap:8px;font-weight:600}
+.chip i{width:12px;height:12px;border-radius:1px;flex:none}
+.badge{font-family:var(--f-mono);font-size:10px;padding:1px 6px;border-radius:9px;white-space:nowrap;vertical-align:middle}
+.ver{background:var(--ok-bg);color:var(--ok-fg)}
+.est{background:var(--est-bg);color:var(--est-fg)}
+
+/* table */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:3px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:500;background:var(--accent-soft)}
+td.n,th.n{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+
+/* bars */
+.bars{display:grid;gap:12px}
+.bar{display:grid;grid-template-columns:118px minmax(0,1fr) 78px;gap:10px;align-items:center;font-size:13.5px}
+.bar .track{height:14px;background:var(--accent-soft);border-radius:1px;position:relative;overflow:hidden}
+.bar .fill{height:100%;border-radius:1px}
+.bar .val{font-family:var(--f-mono);font-size:12.5px;text-align:right;font-variant-numeric:tabular-nums}
+.axis{display:grid;grid-template-columns:118px minmax(0,1fr) 78px;gap:10px;font-family:var(--f-mono);font-size:10.5px;color:var(--muted)}
+.axis .ticks{position:relative;height:14px}
+.axis .ticks span{position:absolute;transform:translateX(-50%)}
+.axis .ticks span:first-child{transform:none}
+.stack{display:flex;height:16px;border-radius:1px;overflow:hidden}
+.stack div{height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);margin-top:14px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:1px;display:inline-block}
+
+/* insights & recs */
+.ins{display:grid;gap:12px}
+.ins .it{border-left:3px solid var(--accent);padding:4px 0 4px 14px;display:grid;gap:4px}
+.ins .it b{font-weight:600}
+.ins .it p{color:var(--muted);font-size:14px}
+.rec{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.rec:last-child{border-bottom:0}
+.rec p{grid-column:1/-1;color:var(--muted);font-size:14px}
+.pill{font-family:var(--f-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;padding:2px 8px;border-radius:2px;align-self:start}
+.p-alta{background:var(--hi);color:var(--surface)}
+.p-media{border:1px solid var(--mid);color:var(--mid)}
+
+/* brand cards */
+.bc{display:grid;gap:12px;align-content:start;border-top:5px solid var(--c)}
+.bc .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.bc .top h3{font-size:26px}
+.bc .page{font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.kpis div{background:var(--surface);padding:8px 10px;display:grid;gap:2px}
+.kpis small{font-family:var(--f-mono);font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.kpis b{font-family:var(--f-mono);font-size:16px;font-weight:500}
+.bc ul{margin:0;padding-left:18px;font-size:13.5px;display:grid;gap:3px}
+.bc .lbl{font-family:var(--f-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.bc .read{font-size:14px;background:var(--accent-soft);padding:10px 12px;border-radius:2px}
+
+/* opportunities */
+.opp{display:grid;gap:10px;align-content:start}
+.opp .where{font-family:var(--f-mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.08em}
+.opp p{font-size:14px;color:var(--muted)}
+.opp .hook{color:var(--ink);font-size:14px;border-top:1px dashed var(--line);padding-top:10px}
+
+/* diagnostic */
+.divider{background:var(--band);color:var(--band-ink)}
+.divider .wrap{padding-block:36px;display:grid;gap:8px}
+.divider .eyebrow{color:#8FB3BF}
+.rank{display:grid;gap:10px}
+.rk{display:grid;grid-template-columns:34px 150px minmax(0,1fr) 72px;gap:12px;align-items:center}
+.rk .pos{font-family:var(--f-display);font-size:30px;font-weight:800;color:var(--muted)}
+.rk .sc{font-family:var(--f-display);font-size:30px;font-weight:800;text-align:right}
+.rk .sc small{font-size:14px;color:var(--muted)}
+.segs{display:flex;height:22px;background:var(--accent-soft);border-radius:1px;overflow:hidden}
+.segs div{height:100%;border-right:1px solid var(--surface)}
+.mini{display:flex;align-items:center;gap:8px}
+.mini .t{flex:1;height:6px;background:var(--accent-soft);border-radius:1px;min-width:36px}
+.mini .t i{display:block;height:100%;background:var(--accent);border-radius:1px}
+.sev{font-family:var(--f-mono);font-size:10.5px;text-transform:uppercase}
+.sev.alta{color:var(--hi)} .sev.media{color:var(--mid)}
+.verd{display:grid;gap:10px;align-content:start;border-top:5px solid var(--c)}
+.verd .score{font-family:var(--f-display);font-size:48px;font-weight:800;line-height:1}
+.verd .score small{font-size:18px;color:var(--muted)}
+.verd h4{margin:0;font-size:15px}
+.verd ul{margin:0;padding-left:18px;font-size:13.5px;display:grid;gap:2px}
+.verd .lbl{font-family:var(--f-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.08em}
+.verd .plus{color:var(--ok-fg)} .verd .minus{color:var(--hi)}
+#adCards>.panel:last-child:nth-child(odd),#opps>.panel:last-child:nth-child(3n+1){grid-column:1/-1}
+footer{padding-block:32px 48px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+footer .wrap{display:grid;gap:10px;max-width:1180px}
+
+@media (max-width:980px){.g3{grid-template-columns:repeat(2,minmax(0,1fr))}.manifest{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:700px){.g2,.g3,.stats{grid-template-columns:minmax(0,1fr)}.manifest{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bar,.axis{grid-template-columns:86px minmax(0,1fr) 64px}.rk{grid-template-columns:26px minmax(0,1fr) 60px}.rk .segs{grid-column:2/-1;grid-row:2}}
+@media (prefers-reduced-motion:no-preference){.fill,.segs div{transition:width .6s ease}}
+</style>
+
+<script id="data" type="application/json">{"meta": {"title": "Radar Navieras", "subtitle": "Benchmark de LinkedIn orgánico y pagado de cinco navieras, leído desde Latinoamérica", "date": "16 de octubre de 2026", "method": "Datos de páginas y Biblioteca de Anuncios de LinkedIn revisados en navegador el 16-oct-2026. Muestra de ~50 publicaciones por marca (12 en COSCO Perú). Interacciones = reacciones + comentarios + compartidos visibles, promedio de los últimos 30 días (90 días en COSCO Perú). La tasa de interacción se calcula sobre seguidores, sin impresiones ni clics, por lo que es una estimación. LinkedIn redondea los seguidores (\"2 mills.\")."}, "industry": [{"value": "21,5%", "label": "de la capacidad mundial de contenedores es de MSC, récord histórico de la industria", "source": "Alphaliner, sept-2026"}, {"value": "3,07 M", "label": "TEU movió el Callao en 2024-25: cuarto puerto de América Latina y el Caribe", "source": "CEPAL, Boletín FAL 414"}, {"value": "~10%", "label": "de los contenedores de Perú pasaron por Chancay entre enero y mayo de 2026, ya por sobre Paita", "source": "APN / ComexPerú"}, {"value": "23 días", "label": "de tránsito Chancay–Shanghái, la conexión que reordena el Pacífico sur", "source": "COSCO Shipping vía Gestión"}, {"value": "30%", "label": "del volumen mundial de exportaciones refrigeradas sale de Sudamérica", "source": "CEPAL vía MundoMarítimo"}, {"value": "124 días", "label": "investiga un comprador B2B antes de hablar con un vendedor; gran parte en LinkedIn", "source": "LinkedIn / Factors.ai, sept-2026"}], "orgConclusions": [{"t": "Publicar más no es resonar más", "x": "Maersk publica cuatro veces más que MSC (36 vs 9 posts al mes), pero MSC obtiene 1,9 veces más interacciones por post (510 vs 268). En la categoría, la producción por pieza pesa más que la cadencia."}, {"t": "El video separa a los dos líderes de interacción", "x": "MSC (70% video) y CMA CGM (49%) encabezan las interacciones por post. Hapag-Lloyd y Maersk, más cargados a imagen y documento, se quedan cerca de 270."}, {"t": "Los picos vienen de la marca, no del producto", "x": "Los posts más fuertes son emocionales: Navidad de MSC (7.089 reacciones), aniversario de CMA CGM (3.233), «Big news» de Hapag-Lloyd (1.760). Los anuncios de servicio rara vez pasan de 700."}, {"t": "Latam es contenido de segunda en las globales", "x": "Las versiones en español de Maersk reciben entre 12 y 198 reacciones. CMA CGM cuenta el origen latinoamericano de la carga, pero en inglés. Ninguna global tiene una línea editorial pensada para el comprador de la región."}, {"t": "COSCO Perú usa LinkedIn como bolsa de trabajo", "x": "10 de sus 12 posts visibles son avisos de empleo. Chancay, su mayor diferenciador en Perú, no aparece en el feed."}], "orgRecs": [{"t": "Producir menos piezas, mejor producidas", "x": "Para una cuenta regional, 8 a 12 piezas al mes con video propio rinden más que el ritmo de Maersk, que la categoría ya demostró que diluye la atención.", "p": "alta"}, {"t": "Hacer del video el formato base", "x": "Los dos líderes de interacción superan el 49% de video. Clips cortos de puerto, operación y personas son el estándar mínimo de la categoría.", "p": "alta"}, {"t": "Escribir para Latam desde Latam", "x": "Traducir posts globales no funciona: el español de Maersk tiene las peores cifras de su página. Hace falta contenido nativo sobre temporadas, puertos y exportadores de la región.", "p": "alta"}, {"t": "Separar empleo de comunicación comercial", "x": "Los avisos de trabajo deberían vivir en la pestaña Empleos o en una página de talento. El feed de marca tiene que hablarle al comprador de carga.", "p": "media"}, {"t": "Crear una serie visual reconocible", "x": "Hapag-Lloyd demuestra que una serie fotográfica constante (buques «Express») construye recordación. Un formato propio, repetido, vale más que piezas sueltas.", "p": "media"}], "adsConclusions": [{"t": "Asimetría total en la pauta", "x": "Maersk acumula 3.272 anuncios en la biblioteca; Hapag-Lloyd 411; CMA CGM 63; MSC 56; COSCO Perú ninguno. Maersk invierte en volumen 52 veces lo que MSC."}, {"t": "Hapag-Lloyd es el único que pauta pensando en Latam", "x": "El 32% de sus anuncios cargados está en español o portugués. Maersk llega al 12%; CMA CGM a 0%; los anuncios en español de MSC apuntan a España."}, {"t": "En la pauta manda el producto digital", "x": "Maersk Spot, Live Position, Quick Quotes y MSC Integration Suite concentran la inversión. El orgánico vende marca; la pauta vende herramientas."}, {"t": "Los ejecutivos ya son medio pagado", "x": "Hapag-Lloyd promociona posts de dos ejecutivos y CMA CGM los de Tanya Saadé Zeenny como Thought Leader Ads. Es el formato emergente de la categoría."}, {"t": "El espacio pagado en Perú está tomado por las globales", "x": "Sin pauta propia, COSCO Perú deja que Hapag-Lloyd y Maersk sean las marcas que el comprador peruano ve en su feed pagado."}], "adsRecs": [{"t": "Pauta en español nativo, no traducida", "x": "Hapag-Lloyd ya ocupa ese terreno; la única forma de diferenciarse es con casos, puertos y cifras locales.", "p": "alta"}, {"t": "Promocionar herramientas con demostración", "x": "La pauta ganadora de la categoría muestra producto digital. Un video de 30 segundos cotizando o rastreando un contenedor vale más que una pieza institucional.", "p": "alta"}, {"t": "Probar Thought Leader Ads con voces regionales", "x": "Ninguna marca promociona a sus gerentes de Latam salvo un testimonio de Hapag-Lloyd. Es un espacio libre y creíble para el comprador local.", "p": "media"}, {"t": "Pauta de temporada agroexportadora", "x": "Campañas acotadas a las ventanas de arándano, palta, uva y cereza, con segmentación por cargo (comercio exterior, logística) en Perú, Chile, Ecuador y Colombia.", "p": "media"}], "opportunities": [{"t": "Chancay como relato propio", "x": "El puerto que ya mueve cerca del 10% de los contenedores de Perú no tiene narrador en LinkedIn. Ni siquiera COSCO Perú lo cuenta.", "hook": "«23 días a Shanghái»: serie que sigue un contenedor de arándanos desde Chancay hasta el destino.", "where": "Orgánico + Ads"}, {"t": "La temporada agroexportadora en español", "x": "Sudamérica despacha el 30% del volumen refrigerado del mundo. CMA CGM cuenta esas historias en inglés y Maersk las traduce sin tracción.", "hook": "Calendario de cosechas con el exportador como protagonista: palta, uva, arándano, cereza, banano.", "where": "Orgánico"}, {"t": "Un LOOKOUT para el Pacífico sur", "x": "Hapag-Lloyd tiene el único newsletter recurrente de la categoría y es en inglés. El comprador investiga 124 días antes de llamar.", "hook": "Newsletter mensual de LinkedIn en español: itinerarios, congestión portuaria, tarifas y temporadas.", "where": "Orgánico"}, {"t": "Gerentes regionales como voces", "x": "La categoría paga posts de ejecutivos globales. Nadie promociona a quienes negocian a diario con los exportadores de la región.", "hook": "«Lo que vi esta semana en el puerto»: posts quincenales del gerente comercial, promocionados como Thought Leader Ads.", "where": "Orgánico + Ads"}, {"t": "Puertos latinoamericanos como escenario", "x": "Hapag-Lloyd fotografía sus buques en Hamburgo y Savannah; Maersk juega «Guess the port» con puertos lejanos.", "hook": "«Adivina el puerto» con Callao, San Antonio, Cartagena, Guayaquil y Manzanillo.", "where": "Orgánico"}, {"t": "Herramientas digitales explicadas en español", "x": "eBL, Spot, Quick Quotes e Integration Suite se pautan casi solo en inglés. Hapag-Lloyd es la excepción.", "hook": "Tutoriales de 30 segundos: emitir un BL electrónico o cotizar en línea desde Lima o Santiago.", "where": "Ads"}, {"t": "Empleo convertido en marca", "x": "COSCO Perú tiene interacción alta con avisos de trabajo: hay comunidad, pero sin relato.", "hook": "Historias del equipo en Lima, Paita y Matarani en lugar de afiches de «Proceso cerrado».", "where": "Orgánico"}], "gaps": [{"d": "Alcance", "k": "followersLabel", "r": "Maersk triplica a Hapag-Lloyd y casi 400 veces a COSCO Perú. En LinkedIn el tamaño de base define el techo de impresiones orgánicas.", "s": "alta"}, {"d": "Frecuencia mensual", "k": "postsPerMonth", "r": "Tres marcas publican entre 24 y 36 piezas al mes. MSC compite con 9 y COSCO Perú con menos de 2, lo que lo deja fuera del feed.", "s": "alta"}, {"d": "Interacciones por post", "k": "interPerPost", "r": "MSC y CMA CGM duplican a Maersk y Hapag-Lloyd. La diferencia la explican el video y la producción emocional.", "s": "media"}, {"d": "Video en el mix", "k": "video", "r": "La brecha entre MSC (70%) y COSCO Perú (0%) es la más clara de la tabla y se correlaciona con la interacción.", "s": "media"}, {"d": "Anuncios en la biblioteca", "k": "adsTotal", "r": "Maersk concentra más del 85% de los anuncios del set. El resto pauta de forma táctica o no pauta.", "s": "alta"}, {"d": "Pauta en ES/PT", "k": "locPct", "r": "Solo Hapag-Lloyd invierte de forma sistemática en el idioma del comprador latinoamericano.", "s": "alta"}], "verdicts": {"Maersk": {"label": "Dominio por volumen", "s": ["Mayor base (3 M) y mayor pauta (3.272 anuncios)", "Thought leadership de cadena de suministro", "Versiones en español en orgánico y pauta"], "w": ["Tasa de interacción más baja del set (0,009%)", "Página con nombre corporativo «A.P. Moller - Maersk»", "Español traducido, sin tracción"]}, "CMA CGM": {"label": "Equilibrio entre volumen y emoción", "s": ["29 posts al mes con 477 interacciones por post", "Storytelling de origen de la carga", "Thought Leader Ads de la familia fundadora"], "w": ["Cero pauta en español", "Pauta institucional sin producto", "Latam contado en inglés"]}, "MSC": {"label": "Pocas piezas, máxima resonancia", "s": ["Mayores interacciones por post (510)", "70% video, el mix más fuerte", "Picos virales de marca (7.089 reacciones)"], "w": ["Frecuencia baja: 9 posts al mes", "Pauta mínima (56 anuncios)", "Su español pagado apunta a España"]}, "Hapag-Lloyd": {"label": "El más cercano a Latam en pauta", "s": ["32% de su pauta en español o portugués", "Serie visual reconocible y newsletter LOOKOUT", "Thought Leader Ads de ejecutivos"], "w": ["Menor base entre las globales (1 M)", "Orgánico 100% en inglés", "Bajo uso de video (26%)"]}, "COSCO Perú": {"label": "Presencia local sin uso comercial", "s": ["100% en español y foco Perú", "Interacción alta sobre su base", "Activo diferencial: Chancay–Shanghái"], "w": ["83% del feed son avisos de empleo", "Sin pauta en LinkedIn", "Chancay ausente del contenido"]}}, "brands": [{"name": "MSC", "page": "MSC Mediterranean Shipping Company", "url": "https://www.linkedin.com/company/msc-mediterranean-shipping-co--s-a-/", "followers": 2000000, "followersLabel": "2 M", "associates": 37834, "postsPerMonth": 9, "interPerPost": 510, "reac": 471, "com": 9.1, "sh": 30, "fmt": {"Video": 70, "Imagen": 16, "Documento": 12, "Texto": 2}, "key": "MSC", "color": "#B8902B", "share": 21.5, "er": 0.025, "video": 70, "ads": {"total": 56, "loaded": 54, "langs": {"EN": 44, "ES": 3, "PT": 1, "FR/IT/DE": 6}, "tla": 0, "themes": ["Rutas: Canadá→Europa (12 anuncios)", "Africa Intermodal (serie de video)", "Autos usados: importar y exportar", "MSC Integration Suite (API) en 5 idiomas", "Nuevas escalas Baltimore y Savannah"], "reading": "Pauta de rutas y servicios dirigida por mercado de origen, localizada a idiomas europeos. El único anuncio en español revisado en detalle se mostró 100% en España (50–100 mil impresiones, may–jun 2026). Latam no aparece como objetivo.", "locPct": 7}, "profile": {"tone": "Institucional y emocional, con fuerte uso de video", "themes": ["Ferias de alimentos y project cargo", "Anuncios de servicios y rutas", "Producto digital: eBL, myMSC", "RSE: Mercy Ships, ballenas", "Saludos culturales y sponsoring"], "top": "Navidad «Helping Santa deliver since 1970»: 7.089 reacciones y 654 compartidos", "latam": "4 posts en español: Expoalimentaria Lima, visita del CEO a Chile y experiencia digital. Servicio Ipanema hacia Sudamérica.", "insight": "Publica la mitad que sus pares pero logra las mayores interacciones por post. Cada pieza está producida como campaña."}, "score": 66, "scoreParts": {"Alcance": 13.3, "Frecuencia": 6.8, "Interacción/post": 15.0, "Video": 10, "Latam orgánico": 6, "Consistencia": 5, "Volumen pauta": 7.5, "Latam en pauta": 2.2}}, {"name": "Maersk", "page": "A.P. Moller - Maersk", "url": "https://www.linkedin.com/company/maersk-group/", "followers": 3000000, "followersLabel": "3 M", "associates": 80004, "postsPerMonth": 36, "interPerPost": 268, "reac": 244, "com": 7.6, "sh": 16.6, "fmt": {"Imagen": 48, "Video": 30, "Documento": 22}, "key": "Maersk", "color": "#2E9CC4", "share": 13.8, "er": 0.009, "video": 30, "ads": {"total": 3272, "loaded": 168, "langs": {"EN": 147, "ES": 18, "PT": 3}, "tla": 0, "themes": ["Maersk Spot: reserva spot con precio fijo", "Resiliencia de la cadena de suministro (EN y ES)", "Empleo: aduanas, recién egresados, tecnología", "Transporte terrestre e intermodal", "Cumplimiento de conexiones (96% on-time)"], "reading": "Pauta always-on a escala industrial: 52 veces el volumen de MSC. Empuja producto digital (Spot) y employer branding, con una capa de thought leadership sobre resiliencia que sí traduce al español.", "locPct": 12}, "profile": {"tone": "Integrador logístico, didáctico, orientado a producto", "themes": ["Logística end-to-end: aéreo, frío, almacenaje", "Thought leadership: nearshoring, clima, resiliencia", "Ferias: Fruit Attraction, Expoalimentaria", "Gamificación: «Guess the port»", "Historia de marca desde 1904"], "top": "Piloto de propulsión asistida por viento 2027: 1.587 reacciones", "latam": "Cerca de 8 posts en español segmentados por idioma (palta, productos frescos, volatilidad de demanda) con 12 a 198 reacciones.", "insight": "La mayor base y la mayor frecuencia (unas 9 piezas por semana), pero la tasa de interacción más baja: el volumen diluye la atención."}, "score": 77, "scoreParts": {"Alcance": 20.0, "Frecuencia": 15, "Interacción/post": 7.9, "Video": 5.0, "Latam orgánico": 7, "Consistencia": 3, "Volumen pauta": 15.0, "Latam en pauta": 3.8}}, {"name": "CMA CGM", "page": "CMA CGM", "url": "https://www.linkedin.com/company/cma-cgm/", "followers": 2000000, "followersLabel": "2 M", "associates": 33022, "postsPerMonth": 29, "interPerPost": 477, "reac": 447, "com": 7.7, "sh": 21.7, "fmt": {"Video": 49, "Imagen": 42, "Documento": 8, "Link": 1}, "key": "CMA CGM", "color": "#C8102E", "share": 12.8, "er": 0.024, "video": 49, "ads": {"total": 63, "loaded": 61, "langs": {"EN": 40, "FR": 21, "ES": 0}, "tla": 1, "themes": ["Flota: CMA CGM NOTRE DAME y buques a GNL", "Aniversario y herencia de Marsella", "Fundación CMA CGM (RSE)", "Servicio TVI / IEX2", "Thought Leader Ad de Tanya Saadé Zeenny"], "reading": "Pauta institucional de orgullo de flota y familia fundadora, en inglés y francés. Prácticamente sin producto y sin ningún anuncio en español.", "locPct": 0}, "profile": {"tone": "Corporativo-emocional, orgullo de familia y flota", "themes": ["Herencia: Marsella, aniversario, bautizos de buques", "Logística CEVA", "Opinión sobre IA y Climate Week", "Origen de la carga: palta, cacao ecuatoriano, Costa Rica, Brasil", "Employer branding y RSE"], "top": "Aniversario del Grupo: 3.233 reacciones", "latam": "Cuenta orígenes latinoamericanos (cacao ecuatoriano, sol de Costa Rica, primera vez en Brasil), pero siempre en inglés.", "insight": "La combinación más equilibrada de volumen y resonancia: 29 posts al mes con 477 interacciones por post."}, "score": 68, "scoreParts": {"Alcance": 13.3, "Frecuencia": 15, "Interacción/post": 14.0, "Video": 8.2, "Latam orgánico": 5, "Consistencia": 5, "Volumen pauta": 7.7, "Latam en pauta": 0.0}}, {"name": "Hapag-Lloyd", "page": "Hapag-Lloyd AG", "url": "https://www.linkedin.com/company/hapag-lloyd-ag/", "followers": 1000000, "followersLabel": "1 M", "associates": 15918, "postsPerMonth": 24, "interPerPost": 271, "reac": 260, "com": 4.7, "sh": 6.8, "fmt": {"Imagen": 42, "Video": 26, "Documento": 24, "Link": 8}, "key": "Hapag-Lloyd", "color": "#E2661A", "share": 7.0, "er": 0.027, "video": 26, "ads": {"total": 411, "loaded": 168, "langs": {"EN": 114, "ES": 47, "PT": 7}, "tla": 2, "themes": ["Live Position: monitoreo de carga 24/7", "Descarbonización (EN, ES, FR)", "Calidad de servicio", "Quick Quotes Spot: cotización inmediata", "Thought Leader Ads de 2 ejecutivos"], "reading": "El anunciante más localizado a Latam: 32% de sus anuncios cargados están en español o portugués. Combina producto digital, sostenibilidad y voces de ejecutivos pagadas como Thought Leader Ads.", "locPct": 32}, "profile": {"tone": "Humano y lúdico, el más cercano de la categoría", "themes": ["Fotografía de buques «Express» como serie", "Newsletter mensual LOOKOUT", "Asistente IA «Marina» y podcast", "Historias de tripulantes", "Rutas Caribe: Caucedo, Cartagena, Manzanillo"], "top": "«Big news... But we're trying to stay calm»: 1.760 reacciones", "latam": "Menciona puertos del Caribe y Centroamérica; feed 100% en inglés.", "insight": "Tiene la marca visual más reconocible (series fotográficas) y el único formato editorial recurrente (LOOKOUT)."}, "score": 63, "scoreParts": {"Alcance": 6.7, "Frecuencia": 15, "Interacción/post": 8.0, "Video": 4.3, "Latam orgánico": 3, "Consistencia": 5, "Volumen pauta": 11.2, "Latam en pauta": 10.0}}, {"name": "COSCO Perú", "page": "COSCO Shipping Lines Peru", "url": "https://www.linkedin.com/company/coscoshipping-lines-peru/", "followers": 8000, "followersLabel": "8 mil", "associates": 41, "postsPerMonth": 1.7, "interPerPost": 139, "reac": 120, "com": 7.8, "sh": 11, "fmt": {"Imagen": 100}, "key": "COSCO Perú", "color": "#1D4F9C", "share": 10.6, "er": 1.738, "video": 0, "ads": {"total": 0, "loaded": 0, "langs": {}, "tla": 0, "themes": ["Sin biblioteca de anuncios"], "reading": "No pauta en LinkedIn. El espacio pagado que ve el comprador peruano lo ocupan las globales, sobre todo Hapag-Lloyd y Maersk.", "locPct": 0}, "profile": {"tone": "Local, en español, funcional", "themes": ["Avisos de empleo (10 de 12 posts)", "Lanzamiento servicio CHX3 Paita–Asia", "Servicio quincenal Matarani"], "top": "Aviso de empleo (Asistente): 459 reacciones", "latam": "100% en español y 100% Perú. El About promete Chancay–Shanghái, pero ningún post habla de Chancay.", "insight": "La página funciona como bolsa de trabajo. Tiene la tasa de interacción más alta por su base chica, pero casi no hace comunicación comercial."}, "score": 14, "scoreParts": {"Alcance": 0.1, "Frecuencia": 1.3, "Interacción/post": 4.1, "Video": 0.0, "Latam orgánico": 6, "Consistencia": 3, "Volumen pauta": 0, "Latam en pauta": 0.0}}]}</script>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow" id="h-date"></div>
+  <h1>Radar <span>Navieras</span></h1>
+  <p class="sub" id="h-sub"></p>
+  <div class="manifest" id="manifest"></div>
+</div></header>
+
+<nav class="top" aria-label="Secciones"><div class="wrap">
+  <a href="#industria">Industria</a><a href="#organico">LinkedIn orgánico</a><a href="#marcas">Marcas</a><a href="#ads">LinkedIn Ads</a><a href="#oportunidades">Oportunidades</a><a href="#diagnostico">Diagnóstico</a><a href="#metodo">Método</a>
+</div></nav>
+
+<main>
+<section id="industria"><div class="wrap">
+  <div class="head"><span class="eyebrow">Contexto</span><h2>La categoría en cifras</h2><p>Cuota de flota, puertos de la región y comportamiento del comprador B2B. Son los datos que enmarcan lo que estas marcas deberían estar contando en LinkedIn.</p></div>
+  <div class="stats" id="stats"></div>
+  <div class="panel" style="margin-top:16px"><h3>Cuota mundial de capacidad vs. seguidores en LinkedIn</h3><div class="bars" id="shareBars"></div><p class="note">Cuota de flota: Alphaliner, sept-2026 (COSCO = grupo global; la página analizada es la filial de Perú). Seguidores redondeados por LinkedIn.</p></div>
+</div></section>
+
+<section id="organico"><div class="wrap">
+  <div class="head"><span class="eyebrow">01 · Orgánico</span><h2>LinkedIn orgánico</h2><p>Base, ritmo y respuesta de la audiencia en las páginas de empresa, últimos 30 días.</p></div>
+  <div class="tbl"><table id="orgTable"></table></div>
+  <div class="grid g2" style="margin-top:16px">
+    <div class="panel"><h3>Posts por mes</h3><div class="bars" id="ppmBars"></div></div>
+    <div class="panel"><h3>Interacciones por post</h3><div class="bars" id="ipBars"></div><p class="note">Reacciones + comentarios + compartidos, promedio de los posts de los últimos 30 días.</p></div>
+    <div class="panel"><h3>Mix de formatos</h3><div class="bars" id="fmtBars"></div><div class="legend" id="fmtLegend"></div></div>
+    <div class="panel"><h3>Tasa de interacción sobre seguidores</h3><div class="bars" id="erBars"></div><p class="note">COSCO Perú queda fuera de escala (1,74%) por su base de 8 mil seguidores; se muestra recortado.</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:16px">
+    <div class="panel"><h3>Conclusiones</h3><div class="ins" id="orgC"></div></div>
+    <div class="panel"><h3>Recomendaciones</h3><div id="orgR"></div></div>
+  </div>
+</div></section>
+
+<section id="marcas"><div class="wrap">
+  <div class="head"><span class="eyebrow">01 · Orgánico</span><h2>Perfil por marca</h2><p>Qué publica cada una, cómo suena y dónde aparece Latinoamérica en su feed.</p></div>
+  <div class="grid g3" id="brandCards"></div>
+</div></section>
+
+<section id="ads"><div class="wrap">
+  <div class="head"><span class="eyebrow">02 · Pagado</span><h2>LinkedIn Ads</h2><p>Biblioteca de Anuncios de LinkedIn: volumen acumulado, idiomas y mensajes de cada anunciante.</p></div>
+  <div class="grid g2">
+    <div class="panel"><h3>Anuncios en la biblioteca</h3><div class="bars" id="adBars"></div><div class="axis" id="adAxis"></div><p class="note">Escala logarítmica: cada marca de la regla multiplica por 10. Con escala lineal, MSC y CMA CGM no serían visibles.</p></div>
+    <div class="panel"><h3>Idioma de los anuncios</h3><div class="bars" id="langBars"></div><div class="legend" id="langLegend"></div><p class="note">Sobre los anuncios cargados en la biblioteca (hasta 168 por marca).</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:16px" id="adCards"></div>
+  <div class="grid g2" style="margin-top:16px">
+    <div class="panel"><h3>Conclusiones</h3><div class="ins" id="adC"></div></div>
+    <div class="panel"><h3>Recomendaciones</h3><div id="adR"></div></div>
+  </div>
+</div></section>
+
+<section id="oportunidades"><div class="wrap">
+  <div class="head"><span class="eyebrow">03 · Estrategia</span><h2>Oportunidades de la categoría</h2><p>Caminos de comunicación que ninguna de las cinco está explotando en LinkedIn para el comprador latinoamericano.</p></div>
+  <div class="grid g3" id="opps"></div>
+</div></section>
+</main>
+
+<div class="divider" id="diagnostico"><div class="wrap">
+  <span class="eyebrow">04 · Diagnóstico</span>
+  <h2>Diagnóstico de presencia en LinkedIn</h2>
+  <p style="color:#C3D2D9;max-width:62ch">Score 0–100 sobre ocho dimensiones de orgánico y pauta. Sin marca cliente: las cinco se evalúan con la misma vara.</p>
+</div></div>
+
+<section><div class="wrap">
+  <div class="panel"><h3>Ranking</h3><div class="rank" id="rank"></div><div class="legend" id="scoreLegend"></div></div>
+  <div class="tbl" style="margin-top:16px"><table id="scoreTable"></table></div>
+  <div class="grid g3" style="margin-top:16px" id="verdicts"></div>
+  <div style="margin-top:28px"><h3 style="margin-bottom:14px">Brechas clave</h3><div class="tbl"><table id="gapTable"></table></div></div>
+</div></section>
+
+<footer id="metodo"><div class="wrap">
+  <span class="eyebrow">Método</span>
+  <p id="method"></p>
+  <p><span class="badge ver">verificado ✓</span> revisado directamente en LinkedIn · <span class="badge est">estimado</span> calculado a partir de lo visible, sin datos internos de la página.</p>
+  <p>Fuentes de industria: Alphaliner (vía Logistics Management y SupplyChain247), CEPAL Boletín FAL 414, APN/ComexPerú, Gestión, MundoMarítimo, LinkedIn/Factors.ai.</p>
+</div></footer>
+
+<script>
+const D=JSON.parse(document.getElementById('data').textContent);
+const B=D.brands, $=id=>document.getElementById(id);
+const fmtN=n=>n.toLocaleString('es-CL');
+const V='<span class="badge ver">verificado ✓</span>', E='<span class="badge est">estimado</span>';
+const chip=b=>`<span class="chip"><i style="background:${b.color}"></i>${b.name}</span>`;
+
+$('h-date').textContent='Benchmark LinkedIn · '+D.meta.date;
+$('h-sub').textContent=D.meta.subtitle;
+$('manifest').innerHTML=B.map(b=>`<div><span class="bx" style="background:${b.color}"></span><span class="nm">${b.name}</span>
+ <span class="kv">Seguidores<b>${b.followersLabel}</b></span><span class="kv">Posts/mes<b>${b.postsPerMonth}</b></span><span class="kv">Anuncios<b>${fmtN(b.ads.total)}</b></span></div>`).join('');
+
+$('stats').innerHTML=D.industry.map(s=>`<div class="stat"><span class="v">${s.value}</span><span class="l">${s.label}</span><span class="s">${s.source}</span></div>`).join('');
+
+function bars(el,rows,max,fmt,opt={}){
+  $(el).innerHTML=rows.map(r=>{const w=Math.max(Math.min(r.v/max,1)*100,r.v>0?.8:0);
+   return `<div class="bar"><span>${chip(r.b)}</span><div class="track"><div class="fill" style="width:${w}%;background:${r.b.color}"></div></div><span class="val">${fmt(r.v)}</span></div>`}).join('');
+}
+bars('shareBars',B.map(b=>({b,v:b.share})),25,v=>v.toLocaleString('es-CL')+'%');
+const ppm=[...B].sort((a,b)=>b.postsPerMonth-a.postsPerMonth);
+bars('ppmBars',ppm.map(b=>({b,v:b.postsPerMonth})),40,v=>v.toLocaleString('es-CL'));
+bars('ipBars',[...B].sort((a,b)=>b.interPerPost-a.interPerPost).map(b=>({b,v:b.interPerPost})),550,fmtN);
+bars('erBars',[...B].sort((a,b)=>b.er-a.er).map(b=>({b,v:b.er})),0.03,v=>v.toLocaleString('es-CL',{maximumFractionDigits:3})+'%');
+
+const fc={Video:'var(--accent)',Imagen:'#7C8E99',Documento:'#C29A3E',Link:'#9B6BB0',Texto:'#B8C4CA'};
+$('fmtBars').innerHTML=B.map(b=>`<div class="bar"><span>${chip(b)}</span><div class="stack">${Object.entries(b.fmt).map(([k,v])=>`<div title="${k} ${v}%" style="width:${v}%;background:${fc[k]}"></div>`).join('')}</div><span class="val">${b.video}% video</span></div>`).join('');
+$('fmtLegend').innerHTML=Object.entries(fc).map(([k,c])=>`<span><i style="background:${c}"></i>${k}</span>`).join('');
+
+$('orgTable').innerHTML=`<thead><tr><th>Marca</th><th>Página</th><th class="n">Seguidores</th><th class="n">Asociados</th><th class="n">Posts/mes</th><th class="n">Interacc./post</th><th class="n">Tasa interacc.</th><th class="n">Video</th></tr></thead><tbody>`+
+ B.map(b=>`<tr><td>${chip(b)}</td><td><a href="${b.url}" target="_blank" rel="noopener">${b.page}</a></td><td class="n">${b.followersLabel} ${V}</td><td class="n">${fmtN(b.associates)}</td><td class="n">${b.postsPerMonth.toLocaleString('es-CL')} ${V}</td><td class="n">${fmtN(b.interPerPost)}</td><td class="n">${b.er.toLocaleString('es-CL',{maximumFractionDigits:3})}% ${E}</td><td class="n">${b.video}%</td></tr>`).join('')+'</tbody>';
+
+const ins=(el,a)=>$(el).innerHTML=a.map(i=>`<div class="it"><b>${i.t}</b><p>${i.x}</p></div>`).join('');
+const recs=(el,a)=>$(el).innerHTML=a.map(r=>`<div class="rec"><b>${r.t}</b><span class="pill p-${r.p}">${r.p}</span><p>${r.x}</p></div>`).join('');
+ins('orgC',D.orgConclusions);recs('orgR',D.orgRecs);ins('adC',D.adsConclusions);recs('adR',D.adsRecs);
+
+$('brandCards').innerHTML=B.map(b=>{const p=b.profile;return `<article class="panel bc" style="--c:${b.color}">
+ <div class="top"><h3>${b.name}</h3><span class="page">${b.followersLabel} seguidores</span></div>
+ <div class="kpis"><div><small>Posts/mes</small><b>${b.postsPerMonth.toLocaleString('es-CL')}</b></div><div><small>Interacc./post</small><b>${fmtN(b.interPerPost)}</b></div></div>
+ <div><div class="lbl">Tono</div><div>${p.tone}</div></div>
+ <div><div class="lbl">Temas</div><ul>${p.themes.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+ <div><div class="lbl">Post más fuerte</div><div style="font-size:13.5px">${p.top}</div></div>
+ <div><div class="lbl">Latam en el feed</div><div style="font-size:13.5px">${p.latam}</div></div>
+ <p class="read">${p.insight}</p></article>`}).join('');
+
+// ads
+const adSorted=[...B].sort((a,b)=>b.ads.total-a.ads.total);
+const L=v=>v>0?Math.log10(v)/4*100:0;
+$('adBars').innerHTML=adSorted.map(b=>`<div class="bar"><span>${chip(b)}</span><div class="track"><div class="fill" style="width:${L(b.ads.total)}%;background:${b.color}"></div></div><span class="val">${b.ads.total?fmtN(b.ads.total):'sin pauta'}</span></div>`).join('');
+$('adAxis').innerHTML=`<span></span><div class="ticks">${[1,10,100,1000,10000].map((t,i)=>`<span style="left:${i*25}%">${i===4?'':fmtN(t)}</span>`).join('')}</div><span></span>`;
+const lc={EN:'#7C8E99',ES:'var(--accent)',PT:'#5FAF8A','FR':'#C29A3E','FR/IT/DE':'#C29A3E'};
+$('langBars').innerHTML=adSorted.filter(b=>b.ads.loaded).map(b=>{const t=b.ads.loaded;return `<div class="bar"><span>${chip(b)}</span><div class="stack">${Object.entries(b.ads.langs).filter(([k,v])=>v).map(([k,v])=>`<div title="${k} ${v}" style="width:${v/t*100}%;background:${lc[k]}"></div>`).join('')}</div><span class="val">${b.ads.locPct}% ES/PT</span></div>`}).join('');
+$('langLegend').innerHTML=[['EN','#7C8E99'],['ES','var(--accent)'],['PT','#5FAF8A'],['FR / IT / DE','#C29A3E']].map(([k,c])=>`<span><i style="background:${c}"></i>${k}</span>`).join('');
+$('adCards').innerHTML=adSorted.map(b=>`<article class="panel bc" style="--c:${b.color}">
+ <div class="top"><h3>${b.name}</h3><span class="page">${b.ads.total?fmtN(b.ads.total)+' anuncios '+V:'sin biblioteca'}</span></div>
+ <div><div class="lbl">Mensajes principales</div><ul>${b.ads.themes.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+ <p class="read">${b.ads.reading}</p></article>`).join('');
+
+$('opps').innerHTML=D.opportunities.map(o=>`<article class="panel opp"><span class="where">${o.where}</span><h3>${o.t}</h3><p>${o.x}</p><div class="hook"><span class="eyebrow">Idea · </span>${o.hook}</div></article>`).join('');
+
+// diagnostic
+const dims=Object.keys(B[0].scoreParts), maxes={'Alcance':20,'Frecuencia':15,'Interacción/post':15,'Video':10,'Latam orgánico':10,'Consistencia':5,'Volumen pauta':15,'Latam en pauta':10};
+const dc=['#0E6F73','#2F8F93','#5FAFB2','#8FC9CB','#C29A3E','#D9BD7A','#6E5BA8','#A193CC'];
+const rk=[...B].sort((a,b)=>b.score-a.score);
+$('rank').innerHTML=rk.map((b,i)=>`<div class="rk"><span class="pos">${i+1}</span><span>${chip(b)}</span><div class="segs">${dims.map((d,j)=>`<div title="${d}: ${b.scoreParts[d]}" style="width:${b.scoreParts[d]}%;background:${dc[j]}"></div>`).join('')}</div><span class="sc">${b.score}<small>/100</small></span></div>`).join('');
+$('scoreLegend').innerHTML=dims.map((d,j)=>`<span><i style="background:${dc[j]}"></i>${d} (${maxes[d]})</span>`).join('');
+$('scoreTable').innerHTML=`<thead><tr><th>Dimensión</th><th class="n">Peso</th>${rk.map(b=>`<th>${b.name}</th>`).join('')}</tr></thead><tbody>`+
+ dims.map(d=>`<tr><td>${d}${/Latam orgánico|Consistencia/.test(d)?' '+E:''}</td><td class="n">${maxes[d]}</td>${rk.map(b=>`<td><div class="mini"><span class="mono" style="width:34px;text-align:right">${b.scoreParts[d].toLocaleString('es-CL')}</span><span class="t"><i style="width:${b.scoreParts[d]/maxes[d]*100}%"></i></span></div></td>`).join('')}</tr>`).join('')+
+ `<tr><td><b>Total</b></td><td class="n">100</td>${rk.map(b=>`<td class="mono"><b>${b.score}</b></td>`).join('')}</tr></tbody>`;
+$('verdicts').innerHTML=rk.map(b=>{const v=D.verdicts[b.key];return `<article class="panel verd" style="--c:${b.color}">
+ <div class="top" style="display:flex;justify-content:space-between;align-items:baseline"><h3>${b.name}</h3><span class="score">${b.score}<small>/100</small></span></div>
+ <h4>${v.label}</h4>
+ <div><div class="lbl plus">Fortalezas</div><ul>${v.s.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+ <div><div class="lbl minus">Debilidades</div><ul>${v.w.map(x=>`<li>${x}</li>`).join('')}</ul></div></article>`}).join('');
+const gv=(b,k)=>k==='adsTotal'?(b.ads.total?fmtN(b.ads.total):'0'):k==='locPct'?b.ads.locPct+'%':k==='video'?b.video+'%':k==='followersLabel'?b.followersLabel:fmtN(b[k]);
+$('gapTable').innerHTML=`<thead><tr><th>Dimensión</th>${rk.map(b=>`<th class="n">${b.name}</th>`).join('')}<th>Lectura estratégica</th><th>Criticidad</th></tr></thead><tbody>`+
+ D.gaps.map(g=>`<tr><td><b>${g.d}</b></td>${rk.map(b=>`<td class="n">${gv(b,g.k)}</td>`).join('')}<td style="min-width:260px">${g.r}</td><td><span class="sev ${g.s}">${g.s}</span></td></tr>`).join('')+'</tbody>';
+$('method').textContent=D.meta.method;
+</script>

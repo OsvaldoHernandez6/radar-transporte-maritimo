@@ -1,0 +1,11 @@
+# MSC — LinkedIn (verificado en navegador 16-oct-2026)
+- Página: "MSC Mediterranean Shipping Company" · URL /company/msc-mediterranean-shipping-co--s-a-/
+- Seguidores: 2 mill. (LinkedIn muestra "2 mills.") · 37.834 miembros asociados · +10.001 empleados · página verificada
+- Muestra: 50 posts cargados (feed ordena mezclado), ~12 meses
+- Posts últimos 30 días (≤4 semanas): 9 → ~9/mes
+- Promedio últimos 30 días: 471 reacciones, 9,1 comentarios, 30 compartidos → interacciones/post ≈ 510 → 0,026% sobre seguidores
+- Formatos (50 posts): Video 35 (70%), Imagen 8 (16%), Documento/carrusel 6 (12%), Texto 1 (2%)
+- Top posts: Navidad "Helping Santa deliver since 1970" 7.089 reacc / 654 shares; Valentine 3.350; Look back 2025 2.534; project cargo "coolest" 2.144; "Names that move the world" 2.120
+- Temas: ferias (SIAL, Fruit Attraction, Fruit Logistica, Asia Fruit Logistica, Breakbulk, Expoalimentaria Lima, Intermodal SA São Paulo, Gulfood, TPM), anuncios de servicios/rutas (Ipanema con ONE, Tiger, Dragon, Eagle, Asia-Med), digital (eBL, myMSC), sostenibilidad (reporte 2025), RSE (Mercy Ships, ballenas), sponsoring deportivo (Sailing Cup, Servette), saludos culturales (Eid, Hijri, Navidad), crisis (Sariska V)
+- Latam: posts en español (Expoalimentaria Lima x2, CEO Soren Toft en Chile, experiencia digital), servicio Ipanema (Sudamérica)
+- Idioma: mayoría inglés, ~4 posts en español

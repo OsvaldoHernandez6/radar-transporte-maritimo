@@ -1,0 +1,11 @@
+# CMA CGM — LinkedIn (verificado 16-oct-2026)
+- Página: "CMA CGM" · /company/cma-cgm/ · Marseille
+- Seguidores: 2 mill. ("2 mills.") · 33.022 miembros asociados · +10.001 empleados
+- Muestra: 51 posts, antigüedad máx. ~3 meses
+- Posts <30 días: 29 → ~29/mes (~7/semana)
+- Promedio 30 días: 447 reacc · 7,7 com · 21,7 shares → ~477 interacciones/post → 0,024%
+- Formatos (51): Video 25 (49%), Multi-imagen 11 (22%), Imagen 10 (20%), Documento 4 (8%), Link 1 (2%)
+- Top: aniversario del Grupo 3.233; naming "CMA CGM ROI ARTHUR" (la leyenda continúa) 1.690; origen en los muelles de Marsella 1.600; nueva escala logística (CEVA) Norteamérica 1.571; employer brand "Early starts. Long days. A run…" 1.429; Fruit Attraction Madrid 1.403; "A first for Brazil" 1.299
+- Temas: herencia y familia fundadora (Marsella, aniversario, naming de buques), logística CEVA, IA (opinión: "AI is not a choice…"), Climate Week NYC, descarbonización (wind, ENGIE), ferias de fruta (Fruit Attraction, Banana Time), STORYTELLING DE ORIGEN LATAM (palta, producción caribeña, cacao ecuatoriano, sol de Costa Rica, primera vez en Brasil), employer branding (Michael electro-technician, 21 nacionalidades, CEVA staff), RSE (escuelas, solidaridad en el mar), cultura (Molière)
+- Tono: corporativo-emocional, fuerte en orgullo y propósito
+- Idioma: inglés

@@ -1,0 +1,67 @@
+{
+ "meta": {
+  "title": "Radar Navieras",
+  "subtitle": "Benchmark de LinkedIn orgánico y pagado de cinco navieras, leído desde Latinoamérica",
+  "date": "16 de octubre de 2026",
+  "method": "Datos de páginas y Biblioteca de Anuncios de LinkedIn revisados en navegador el 16-oct-2026. Muestra de ~50 publicaciones por marca (12 en COSCO Perú). Interacciones = reacciones + comentarios + compartidos visibles, promedio de los últimos 30 días (90 días en COSCO Perú). La tasa de interacción se calcula sobre seguidores, sin impresiones ni clics, por lo que es una estimación. LinkedIn redondea los seguidores (\"2 mills.\")."
+ },
+ "industry": [
+  {"value": "21,5%", "label": "de la capacidad mundial de contenedores es de MSC, récord histórico de la industria", "source": "Alphaliner, sept-2026"},
+  {"value": "3,07 M", "label": "TEU movió el Callao en 2024-25: cuarto puerto de América Latina y el Caribe", "source": "CEPAL, Boletín FAL 414"},
+  {"value": "~10%", "label": "de los contenedores de Perú pasaron por Chancay entre enero y mayo de 2026, ya por sobre Paita", "source": "APN / ComexPerú"},
+  {"value": "23 días", "label": "de tránsito Chancay–Shanghái, la conexión que reordena el Pacífico sur", "source": "COSCO Shipping vía Gestión"},
+  {"value": "30%", "label": "del volumen mundial de exportaciones refrigeradas sale de Sudamérica", "source": "CEPAL vía MundoMarítimo"},
+  {"value": "124 días", "label": "investiga un comprador B2B antes de hablar con un vendedor; gran parte en LinkedIn", "source": "LinkedIn / Factors.ai, sept-2026"}
+ ],
+ "orgConclusions": [
+  {"t": "Publicar más no es resonar más", "x": "Maersk publica cuatro veces más que MSC (36 vs 9 posts al mes), pero MSC obtiene 1,9 veces más interacciones por post (510 vs 268). En la categoría, la producción por pieza pesa más que la cadencia."},
+  {"t": "El video separa a los dos líderes de interacción", "x": "MSC (70% video) y CMA CGM (49%) encabezan las interacciones por post. Hapag-Lloyd y Maersk, más cargados a imagen y documento, se quedan cerca de 270."},
+  {"t": "Los picos vienen de la marca, no del producto", "x": "Los posts más fuertes son emocionales: Navidad de MSC (7.089 reacciones), aniversario de CMA CGM (3.233), «Big news» de Hapag-Lloyd (1.760). Los anuncios de servicio rara vez pasan de 700."},
+  {"t": "Latam es contenido de segunda en las globales", "x": "Las versiones en español de Maersk reciben entre 12 y 198 reacciones. CMA CGM cuenta el origen latinoamericano de la carga, pero en inglés. Ninguna global tiene una línea editorial pensada para el comprador de la región."},
+  {"t": "COSCO Perú usa LinkedIn como bolsa de trabajo", "x": "10 de sus 12 posts visibles son avisos de empleo. Chancay, su mayor diferenciador en Perú, no aparece en el feed."}
+ ],
+ "orgRecs": [
+  {"t": "Producir menos piezas, mejor producidas", "x": "Para una cuenta regional, 8 a 12 piezas al mes con video propio rinden más que el ritmo de Maersk, que la categoría ya demostró que diluye la atención.", "p": "alta"},
+  {"t": "Hacer del video el formato base", "x": "Los dos líderes de interacción superan el 49% de video. Clips cortos de puerto, operación y personas son el estándar mínimo de la categoría.", "p": "alta"},
+  {"t": "Escribir para Latam desde Latam", "x": "Traducir posts globales no funciona: el español de Maersk tiene las peores cifras de su página. Hace falta contenido nativo sobre temporadas, puertos y exportadores de la región.", "p": "alta"},
+  {"t": "Separar empleo de comunicación comercial", "x": "Los avisos de trabajo deberían vivir en la pestaña Empleos o en una página de talento. El feed de marca tiene que hablarle al comprador de carga.", "p": "media"},
+  {"t": "Crear una serie visual reconocible", "x": "Hapag-Lloyd demuestra que una serie fotográfica constante (buques «Express») construye recordación. Un formato propio, repetido, vale más que piezas sueltas.", "p": "media"}
+ ],
+ "adsConclusions": [
+  {"t": "Asimetría total en la pauta", "x": "Maersk acumula 3.272 anuncios en la biblioteca; Hapag-Lloyd 411; CMA CGM 63; MSC 56; COSCO Perú ninguno. Maersk invierte en volumen 52 veces lo que MSC."},
+  {"t": "Hapag-Lloyd es el único que pauta pensando en Latam", "x": "El 32% de sus anuncios cargados está en español o portugués. Maersk llega al 12%; CMA CGM a 0%; los anuncios en español de MSC apuntan a España."},
+  {"t": "En la pauta manda el producto digital", "x": "Maersk Spot, Live Position, Quick Quotes y MSC Integration Suite concentran la inversión. El orgánico vende marca; la pauta vende herramientas."},
+  {"t": "Los ejecutivos ya son medio pagado", "x": "Hapag-Lloyd promociona posts de dos ejecutivos y CMA CGM los de Tanya Saadé Zeenny como Thought Leader Ads. Es el formato emergente de la categoría."},
+  {"t": "El espacio pagado en Perú está tomado por las globales", "x": "Sin pauta propia, COSCO Perú deja que Hapag-Lloyd y Maersk sean las marcas que el comprador peruano ve en su feed pagado."}
+ ],
+ "adsRecs": [
+  {"t": "Pauta en español nativo, no traducida", "x": "Hapag-Lloyd ya ocupa ese terreno; la única forma de diferenciarse es con casos, puertos y cifras locales.", "p": "alta"},
+  {"t": "Promocionar herramientas con demostración", "x": "La pauta ganadora de la categoría muestra producto digital. Un video de 30 segundos cotizando o rastreando un contenedor vale más que una pieza institucional.", "p": "alta"},
+  {"t": "Probar Thought Leader Ads con voces regionales", "x": "Ninguna marca promociona a sus gerentes de Latam salvo un testimonio de Hapag-Lloyd. Es un espacio libre y creíble para el comprador local.", "p": "media"},
+  {"t": "Pauta de temporada agroexportadora", "x": "Campañas acotadas a las ventanas de arándano, palta, uva y cereza, con segmentación por cargo (comercio exterior, logística) en Perú, Chile, Ecuador y Colombia.", "p": "media"}
+ ],
+ "opportunities": [
+  {"t": "Chancay como relato propio", "x": "El puerto que ya mueve cerca del 10% de los contenedores de Perú no tiene narrador en LinkedIn. Ni siquiera COSCO Perú lo cuenta.", "hook": "«23 días a Shanghái»: serie que sigue un contenedor de arándanos desde Chancay hasta el destino.", "where": "Orgánico + Ads"},
+  {"t": "La temporada agroexportadora en español", "x": "Sudamérica despacha el 30% del volumen refrigerado del mundo. CMA CGM cuenta esas historias en inglés y Maersk las traduce sin tracción.", "hook": "Calendario de cosechas con el exportador como protagonista: palta, uva, arándano, cereza, banano.", "where": "Orgánico"},
+  {"t": "Un LOOKOUT para el Pacífico sur", "x": "Hapag-Lloyd tiene el único newsletter recurrente de la categoría y es en inglés. El comprador investiga 124 días antes de llamar.", "hook": "Newsletter mensual de LinkedIn en español: itinerarios, congestión portuaria, tarifas y temporadas.", "where": "Orgánico"},
+  {"t": "Gerentes regionales como voces", "x": "La categoría paga posts de ejecutivos globales. Nadie promociona a quienes negocian a diario con los exportadores de la región.", "hook": "«Lo que vi esta semana en el puerto»: posts quincenales del gerente comercial, promocionados como Thought Leader Ads.", "where": "Orgánico + Ads"},
+  {"t": "Puertos latinoamericanos como escenario", "x": "Hapag-Lloyd fotografía sus buques en Hamburgo y Savannah; Maersk juega «Guess the port» con puertos lejanos.", "hook": "«Adivina el puerto» con Callao, San Antonio, Cartagena, Guayaquil y Manzanillo.", "where": "Orgánico"},
+  {"t": "Herramientas digitales explicadas en español", "x": "eBL, Spot, Quick Quotes e Integration Suite se pautan casi solo en inglés. Hapag-Lloyd es la excepción.", "hook": "Tutoriales de 30 segundos: emitir un BL electrónico o cotizar en línea desde Lima o Santiago.", "where": "Ads"},
+  {"t": "Empleo convertido en marca", "x": "COSCO Perú tiene interacción alta con avisos de trabajo: hay comunidad, pero sin relato.", "hook": "Historias del equipo en Lima, Paita y Matarani en lugar de afiches de «Proceso cerrado».", "where": "Orgánico"}
+ ],
+ "gaps": [
+  {"d": "Alcance", "k": "followersLabel", "r": "Maersk triplica a Hapag-Lloyd y casi 400 veces a COSCO Perú. En LinkedIn el tamaño de base define el techo de impresiones orgánicas.", "s": "alta"},
+  {"d": "Frecuencia mensual", "k": "postsPerMonth", "r": "Tres marcas publican entre 24 y 36 piezas al mes. MSC compite con 9 y COSCO Perú con menos de 2, lo que lo deja fuera del feed.", "s": "alta"},
+  {"d": "Interacciones por post", "k": "interPerPost", "r": "MSC y CMA CGM duplican a Maersk y Hapag-Lloyd. La diferencia la explican el video y la producción emocional.", "s": "media"},
+  {"d": "Video en el mix", "k": "video", "r": "La brecha entre MSC (70%) y COSCO Perú (0%) es la más clara de la tabla y se correlaciona con la interacción.", "s": "media"},
+  {"d": "Anuncios en la biblioteca", "k": "adsTotal", "r": "Maersk concentra más del 85% de los anuncios del set. El resto pauta de forma táctica o no pauta.", "s": "alta"},
+  {"d": "Pauta en ES/PT", "k": "locPct", "r": "Solo Hapag-Lloyd invierte de forma sistemática en el idioma del comprador latinoamericano.", "s": "alta"}
+ ],
+ "verdicts": {
+  "Maersk": {"label": "Dominio por volumen", "s": ["Mayor base (3 M) y mayor pauta (3.272 anuncios)", "Thought leadership de cadena de suministro", "Versiones en español en orgánico y pauta"], "w": ["Tasa de interacción más baja del set (0,009%)", "Página con nombre corporativo «A.P. Moller - Maersk»", "Español traducido, sin tracción"]},
+  "CMA CGM": {"label": "Equilibrio entre volumen y emoción", "s": ["29 posts al mes con 477 interacciones por post", "Storytelling de origen de la carga", "Thought Leader Ads de la familia fundadora"], "w": ["Cero pauta en español", "Pauta institucional sin producto", "Latam contado en inglés"]},
+  "MSC": {"label": "Pocas piezas, máxima resonancia", "s": ["Mayores interacciones por post (510)", "70% video, el mix más fuerte", "Picos virales de marca (7.089 reacciones)"], "w": ["Frecuencia baja: 9 posts al mes", "Pauta mínima (56 anuncios)", "Su español pagado apunta a España"]},
+  "Hapag-Lloyd": {"label": "El más cercano a Latam en pauta", "s": ["32% de su pauta en español o portugués", "Serie visual reconocible y newsletter LOOKOUT", "Thought Leader Ads de ejecutivos"], "w": ["Menor base entre las globales (1 M)", "Orgánico 100% en inglés", "Bajo uso de video (26%)"]},
+  "COSCO Perú": {"label": "Presencia local sin uso comercial", "s": ["100% en español y foco Perú", "Interacción alta sobre su base", "Activo diferencial: Chancay–Shanghái"], "w": ["83% del feed son avisos de empleo", "Sin pauta en LinkedIn", "Chancay ausente del contenido"]}
+ }
+}

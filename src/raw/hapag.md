@@ -1,0 +1,11 @@
+# Hapag-Lloyd — LinkedIn (verificado 16-oct-2026)
+- Página: "Hapag-Lloyd AG" · /company/hapag-lloyd-ag/ · tagline "Your cargo, our promise." · Hamburg
+- Seguidores: 1 mill. ("1 mills.") · 15.918 miembros asociados · +10.001 empleados
+- Muestra: 50 posts, ~4 meses de antigüedad máx.
+- Posts últimos 30 días: 24 → ~24/mes (~5,6/semana)
+- Promedio 30 días: 260 reacc · 4,7 com · 6,8 shares → ~271 interacciones/post → 0,027%
+- Formatos (50): Imagen 17 (34%), Multi-imagen 4 (8%), Video 13 (26%), Documento 12 (24%), Link/artículo 4 (8%)
+- Top: "Big news... trying to stay calm" 1.760; ranking/premio "proud to share..." 1.072; "The name says Hamburg" 981; Savannah sunset 520; Hamburg Express 399 m 489
+- Temas: fotografía de buques "Express" (marca visual fuerte, serie), newsletter mensual LOOKOUT (link), Fruit Attraction (día 1/día 2), Golden Week China, asistente IA "Marina", podcast/conversaciones, transición energética, historias de seafarers (Cindy), efemérides (equinoccio, World Photography Day, Helicopter Day), Pride Hamburgo, Champions League, quiz de Bills of Lading, rutas Caribe/Latam (Caucedo, Cartagena, Manzanillo), Lars Jensen (analista)
+- Tono: el más "humano"/lúdico de la categoría, humor ligero, alta frecuencia
+- Idioma: inglés

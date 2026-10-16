@@ -1,0 +1,7 @@
+{
+  "MSC": {"name":"MSC","page":"MSC Mediterranean Shipping Company","url":"https://www.linkedin.com/company/msc-mediterranean-shipping-co--s-a-/","followers":2000000,"followersLabel":"2 M","associates":37834,"postsPerMonth":9,"interPerPost":510,"reac":471,"com":9.1,"sh":30,"fmt":{"Video":70,"Imagen":16,"Documento":12,"Texto":2}},
+  "Hapag-Lloyd": {"name":"Hapag-Lloyd","page":"Hapag-Lloyd AG","url":"https://www.linkedin.com/company/hapag-lloyd-ag/","followers":1000000,"followersLabel":"1 M","associates":15918,"postsPerMonth":24,"interPerPost":271,"reac":260,"com":4.7,"sh":6.8,"fmt":{"Imagen":42,"Video":26,"Documento":24,"Link":8}},
+  "Maersk": {"name":"Maersk","page":"A.P. Moller - Maersk","url":"https://www.linkedin.com/company/maersk-group/","followers":3000000,"followersLabel":"3 M","associates":80004,"postsPerMonth":36,"interPerPost":268,"reac":244,"com":7.6,"sh":16.6,"fmt":{"Imagen":48,"Video":30,"Documento":22}},
+  "CMA CGM": {"name":"CMA CGM","page":"CMA CGM","url":"https://www.linkedin.com/company/cma-cgm/","followers":2000000,"followersLabel":"2 M","associates":33022,"postsPerMonth":29,"interPerPost":477,"reac":447,"com":7.7,"sh":21.7,"fmt":{"Video":49,"Imagen":42,"Documento":8,"Link":1}},
+  "COSCO Perú": {"name":"COSCO Perú","page":"COSCO Shipping Lines Peru","url":"https://www.linkedin.com/company/coscoshipping-lines-peru/","followers":8000,"followersLabel":"8 mil","associates":41,"postsPerMonth":1.7,"interPerPost":139,"reac":120,"com":7.8,"sh":11,"fmt":{"Imagen":100}}
+}
