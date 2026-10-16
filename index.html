@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -745,7 +745,7 @@ function setFz(i){fzI=Math.max(0,Math.min(FZ.length-1,i));document.documentEleme
   if(typeof D!=='undefined'&&D)requestAnimationFrame(drawCharts)}
 function openSheet(){lastFocus=document.activeElement;document.getElementById('sheet').hidden=false;document.querySelector('#sheet [data-th][aria-pressed="true"]')?.focus()}
 function closeSheet(){document.getElementById('sheet').hidden=true;lastFocus?.focus?.()}
-function setTheme(t){try{t==='system'?localStorage.removeItem('radar-theme'):localStorage.setItem('radar-theme',t)}catch(e){} if(t==='system')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',t);document.querySelectorAll('[data-th]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.th===t))}
+function setTheme(t){if(t==='system')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',t);document.querySelectorAll('[data-th]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.th===t))}
 function wire(){
   document.addEventListener('click',e=>{
     const l=e.target.closest('[data-lens],[data-lens-btn]');if(l)setLens(l.dataset.lens||l.dataset.lensBtn);
@@ -782,7 +782,7 @@ function wire(){
   const tip=document.getElementById('tip');
   document.addEventListener('mousemove',e=>{const r=e.target.closest('[data-tip]');if(!r){tip.style.opacity=0;return}tip.textContent=r.dataset.tip;tip.style.opacity=1;tip.style.left=Math.min(e.clientX+14,innerWidth-tip.offsetWidth-8)+'px';tip.style.top=(e.clientY+16)+'px'});
   document.querySelectorAll('[data-prefs]').forEach(el=>el.innerHTML=prefsHTML());
-  let t='system';try{t=localStorage.getItem('radar-theme')||'system'}catch(e){} setTheme(t);
+  setTheme('light');
   let f=1;try{const v=localStorage.getItem('radar-fz');if(v!==null)f=+v}catch(e){} setFz(isNaN(f)?1:f);
 }
 async function init(){
